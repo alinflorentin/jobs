@@ -13,21 +13,21 @@
 
 ActiveRecord::Schema.define(version: 20160312151605) do
 
-  create_table "job_skills", force: :cascade do |t|
-    t.integer  "job_id"
-    t.integer  "skill_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "jobs", force: :cascade do |t|
     t.string   "title",         null: false
     t.string   "description"
-    t.integer  "owner_id",      null: false
+    t.integer  "owner_user_id", null: false
     t.integer  "hired_user_id"
     t.datetime "deadline",      null: false
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
+  end
+
+  create_table "jobs_skills", force: :cascade do |t|
+    t.integer  "job_id"
+    t.integer  "skill_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "skills", force: :cascade do |t|
@@ -37,7 +37,7 @@ ActiveRecord::Schema.define(version: 20160312151605) do
     t.datetime "updated_at",  null: false
   end
 
-  create_table "user_skills", force: :cascade do |t|
+  create_table "skills_users", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "skill_id"
     t.datetime "created_at", null: false

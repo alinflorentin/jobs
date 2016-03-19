@@ -10,3 +10,18 @@ paul, alia, leto = User.create([
   {name: 'Alia Atreides',  email: 'alia@arrakis.com',  password: 'ironhack', password_confirmation: 'ironhack'},
   {name: 'Leto Atreides', email: 'leto@arrakis.com',  password: 'ironhack', password_confirmation: 'ironhack'}
 ])
+
+ruby = Skill.create(name: "Ruby")
+php = Skill.create(name: "PHP")
+css = Skill.create(name: "CSS")
+
+paul.skills << [css, php]
+alia.skills << ruby
+
+coding = Job.create(title: "Coding", owner_user_id: paul.id, hired_user_id: alia.id, deadline: Date.tomorrow)
+design = Job.create(title: "Design", owner_user_id: leto.id, hired_user_id: paul.id, deadline: Date.tomorrow)
+
+coding.skills << ruby
+design.skills << css
+
+puts "Seeds complete!"
